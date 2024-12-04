@@ -15,6 +15,7 @@ public class partOne {
         
         String input = null;
         //Created regex to find the correct mults
+        //https://regex101.com/r/EJ6q0T/1
         Pattern multRegex = Pattern.compile("mul[(]\\d+,\\d+[)]");
         Matcher multFinder;
         try (BufferedReader fileReader = Files.newBufferedReader(Paths.get("input3.txt"))) {
