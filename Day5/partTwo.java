@@ -67,33 +67,29 @@ public class partTwo {
                 }
                 ArrayList<Integer> sortedThing = new ArrayList<>();
                 if (!correct) {
-                    System.out.println(Arrays.toString(values));
+                    //System.out.println(Arrays.toString(values));
                     sortedThing.add(Integer.parseInt(values[0]));
                     for (int i = 1; i < values.length; i++) {
                         int value = Integer.parseInt(values[i]);
                         int z;
                         Ordering priority = pages.get(value);
-                        System.out.println(priority.belowPriority);
-                        System.out.println(priority.abovePriority);
+                        //System.out.println(priority.belowPriority);
+                        //System.out.println(priority.abovePriority);
                         //Start from bottom and check until a guaranteed lower priority
-                        for (z = sortedThing.size()-1;  z > 0; z--) {
+                        for (z = sortedThing.size()-1;  z > -1; z--) {
                             if (!priority.belowPriority.contains(sortedThing.get(z))) {
+                                //if (priority.abovePriority.contains(sortedThing.get(z))) {
+                                    sortedThing.add(z+1, value);
+                                //}
                                 //If something is no longer below priority, then it must be evaluated as to whether it has above priority
                                 break;
                             }
                         }
                         System.out.println(z);
-                        for (z = z; z < sortedThing.size(); z++) {
-                            if (priority.abovePriority.contains(sortedThing.get(z))) {
-                                //This pushes that value above the newly added item because it has above priority
-                                sortedThing.add(z+1, value);
-                                break;
-                            }
-                        }
-                        //If the value is not in the array, that means that everything is below it and nothing is above it, so insert at the top
-                        if (!sortedThing.contains(value)) {
+                       if (!sortedThing.contains(value)) {
                             sortedThing.add(0,value);
                         }
+                        System.out.println(sortedThing);
                         
                     }
                     System.out.println(sortedThing);
